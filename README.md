@@ -9,7 +9,7 @@ one random word is displayed, then user has to write that word.
 - a reroll button
 
 # MECHANICS
-### generating words to displayx`
+### generating words to display
 - a JSON file with all words
 - if it's images then image with the name as a filename
 - a txt file with all words seperated by ";" or sth else
