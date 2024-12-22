@@ -1,5 +1,11 @@
+<?php
+    session_start();
+    if(isset($_SESSION['answer'])){
+        $answer = $_SESSION['answer'];
+    }
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl" notranslate>
 
 <head>
     <meta charset="UTF-8">
@@ -9,11 +15,13 @@
     <script src="./jQuery/jquery.validate.js"></script>
     <script src="./jQuery/messages_pl.js"></script>
     <script src="./script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <title>Typing Game</title>
 </head>
 
 <body>
     <?php
+    
     // Filepath to settings.json
     $settingsFile = 'settings.json';
 
@@ -47,19 +55,26 @@
         $rand = rand(0, count($words) - 1);
         global $settings;
         if($settings["visibleNumber"] === true){
-            echo "random number: $rand <br>";
+            echo "Word no. $rand <br>";
         }
         $word = $words[$rand];
         return $word;
     }
-    $word = getRandomWord($words);
+
+    if(!isset($_SESSION['answer']) || $_SESSION['answer'] == 'dobrze'){
+        $word = getRandomWord($words);
+    }
+    else if ($_SESSION['answer'] == 'zle'){
+        $word = $_SESSION['word'];
+    }
     echo "<p id='word'>$word</p>";
     ?>
     <button id="soundButton">ODTWÓRZ</button>
     <form autocomplete="off" id="formularz" method="post" action="inputCheck.php">
         <input type="hidden" name="random-word" id="random-word" value="<?php echo $word ?>">
-        <input type="text" name="user-input" id="user-input" class="required" value="" autofocus><br>
-        <button type="submit" id="input-check">Sprawdz</button>
+
+        <input type="text" name="user-input" id="userInput" class="required" value=""><br>
+        <button type="submit" id="input-check">Sprawdź</button>
     </form>
     <p id="test"></p>
     <?php

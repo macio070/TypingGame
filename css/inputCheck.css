@@ -1,0 +1,18 @@
+#restart{
+    width: 250px;
+    height: 100px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.dobrze{
+    color: rgb(40, 190, 72);
+}
+.zle{
+    color: rgb(225, 60, 60);
+}
+#word{
+    font-size: 3em;
+    user-select: none;
+    -webkit-text-stroke: 1px;
+}
