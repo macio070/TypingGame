@@ -1,6 +1,6 @@
 {
     "filePath": "100_words.txt",
-    "visibleWord": false,
+    "visibleWord": true,
     "visibleNumber": false,
     "playSound" : true,
     "volume": 0.5
