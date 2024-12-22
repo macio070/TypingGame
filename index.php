@@ -73,7 +73,7 @@
     <form autocomplete="off" id="formularz" method="post" action="inputCheck.php">
         <input type="hidden" name="random-word" id="random-word" value="<?php echo $word ?>">
 
-        <input type="text" name="user-input" id="userInput" class="required" value="" autofocus><br>
+        <input type="text" name="user-input" id="userInput" class="required" value=""><br>
         <button type="submit" id="input-check">Sprawdź</button>
     </form>
     <p id="test"></p>
