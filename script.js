@@ -1,5 +1,9 @@
 $(document).ready(function(){
-    $("#formularz").validate();
+    $("#formularz").validate({
+        messages: {
+            required: " "
+        }
+    });
 
     const random_word = $("#word").text();
     console.log(random_word);
