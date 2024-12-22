@@ -23,4 +23,13 @@ $(document).ready(function(){
             audio.play();
         });
       });
+
+
+      window.addEventListener('keydown', checkKeyPressed, false);
+        function checkKeyPressed(evt){
+            if(evt.keyCode == "191"){
+                alert("kliknales /");
+            }
+        }
+      
  });
