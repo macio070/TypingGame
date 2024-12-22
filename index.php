@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="./jQuery/jquery.validate.js"></script>
@@ -13,8 +14,17 @@
 
 <body>
     <?php
-    $filePath = '100_words.txt';
+    // Filepath to settings.json
+    $settingsFile = 'settings.json';
 
+    // Read and decode the JSON file
+    if (!file_exists($settingsFile)) {
+        die("Nie znaleziono ustawień!");
+    }
+        $settings = json_decode(file_get_contents($settingsFile), true);
+
+
+    $filePath = $settings["filePath"];
     function getWordsFromFile($filePath)
     {
         if (!file_exists($filePath)) {
@@ -35,17 +45,19 @@
     function getRandomWord($words)
     {
         $rand = rand(0, count($words) - 1);
-        echo "random number: $rand <br>";
+        global $settings;
+        if($settings["visibleNumber"] === true){
+            echo "random number: $rand <br>";
+        }
         $word = $words[$rand];
         return $word;
     }
-
     $word = getRandomWord($words);
-    
-    echo "<p id='word'>$word</p>"
+    echo "<p id='word'>$word</p>";
     ?>
+    <button id="soundButton">ODTWÓRZ</button>
     <form autocomplete="off" id="formularz" method="post" action="inputCheck.php">
-        <input type="hidden" name="random-word" id="random-word" value="<?php echo $word?>">
+        <input type="hidden" name="random-word" id="random-word" value="<?php echo $word ?>">
         <input type="text" name="user-input" id="user-input" class="required" value="" autofocus><br>
         <button type="submit" id="input-check">Sprawdz</button>
     </form>
