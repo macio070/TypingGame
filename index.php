@@ -20,6 +20,11 @@
 </head>
 
 <body>
+    <div class="keyboardControls">
+        <p>Naciśnij <code>,</code> aby odsłuchać</p><br>
+        <p>Naciśnij <code>.</code> aby wybrać pole tekstowe</p>
+    </div>
+
     <?php
     
     // Filepath to settings.json
@@ -54,10 +59,11 @@
     {
         $rand = rand(0, count($words) - 1);
         global $settings;
+        $word = $words[$rand];
+        $rand++;
         if($settings["visibleNumber"] === true){
             echo "Word no. $rand <br>";
         }
-        $word = $words[$rand];
         return $word;
     }
 
@@ -67,7 +73,13 @@
     else if ($_SESSION['answer'] == 'zle'){
         $word = $_SESSION['word'];
     }
-    echo "<p id='word'>$word</p>";
+    
+    if(!$settings['visibleWord']){
+        echo "<p id='word' hidden>$word</p>";
+    }
+    else{
+        echo "<p id='word'>$word</p>";
+    }
     ?>
     <button id="soundButton">ODTWÓRZ</button>
     <form autocomplete="off" id="formularz" method="post" action="inputCheck.php">

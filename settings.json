@@ -1,6 +1,7 @@
 {
     "filePath": "100_words.txt",
-    "visibleWord": true,
+    "autofocus": false,
+    "visibleWord": false,
     "visibleNumber": false,
     "playSound" : true,
     "volume": 1

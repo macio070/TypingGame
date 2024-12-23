@@ -24,6 +24,13 @@ body {
           justify-content: center;
 }
 
+.keyboardControls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 25px;
+}
+
 form {
   display: -webkit-box;
   display: -ms-flexbox;
