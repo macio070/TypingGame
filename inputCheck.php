@@ -27,7 +27,7 @@ session_start();
     echo "<br>";
 
 ?>
-        <form action="index.php" method="post">
+        <form action="<?php echo $url?>" method="post">
             <button type="submit" id="restart" autofocus>JESZCZE RAZ</button>
         </form>
     </body>
