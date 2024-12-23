@@ -11,10 +11,6 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   gap: 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -26,9 +22,41 @@ body {
 
 .keyboardControls {
   position: absolute;
-  top: 0;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   left: 0;
-  margin: 25px;
+  margin: 15px;
+}
+.keyboardControls p {
+  font-size: 1em;
+}
+
+.settings {
+  position: absolute;
+  right: 0;
+  margin: 15px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+.settings button {
+  font-size: 1.5em;
+  font-weight: bold;
+  width: 175px;
+  height: 75px;
+  background-color: #e14176;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 form {

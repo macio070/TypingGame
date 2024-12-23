@@ -5,12 +5,20 @@ session_start();
     <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/inputCheck.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="../css/inputCheck.css">
     </head>
     <body>
     <?php
-    $url = "http://" . $_SERVER['SERVER_NAME'] . "/TypingGame";
+    if (isset($_SERVER['HTTPS']))
+    {
+        $url = "https://" . $_SERVER['SERVER_NAME'] . "/TypingGame/game";
+    }
+    else
+    {
+        $url = "http://" . $_SERVER['SERVER_NAME'] . "/TypingGame/game";
+    }
+   
     header("Refresh: 1; URL=$url");
     $word = $_POST["random-word"];
     $user_input = $_POST["user-input"];

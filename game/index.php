@@ -3,6 +3,15 @@
     if(isset($_SESSION['answer'])){
         $answer = $_SESSION['answer'];
     }
+//     $db = new SQLite3('sessions.db');
+// // Generate a session ID
+// if (!isset($_COOKIE['session_id'])) {
+//     //setcookie('session_id', uniqid('session_', false));
+//     $sessionID = $_SESSION['session_id'];
+//     $start_time = date('Y-m-d H:i:s');
+//     $db->exec("INSERT INTO session (uniqid, creation_date) VALUES ('$sessionID', '$start_time')");
+// }
+// echo $_SESSION['session_id'];
 ?>
 <!DOCTYPE html>
 <html lang="pl" notranslate>
@@ -12,23 +21,25 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="./jQuery/jquery.validate.js"></script>
-    <script src="./jQuery/messages_pl.js"></script>
-    <script src="./script.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <script src="../script/jQuery/jquery.validate.js"></script>
+    <script src="../script/jQuery/messages_pl.js"></script>
+    <script src="../script/script.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <title>Typing Game</title>
 </head>
 
 <body>
     <div class="keyboardControls">
-        <p>Naciśnij <code>,</code> aby odsłuchać</p><br>
+        <p>Naciśnij <code>,</code> aby odsłuchać</p>
         <p>Naciśnij <code>.</code> aby wybrać pole tekstowe</p>
     </div>
-
+    
+        
+<main>
     <?php
     
     // Filepath to settings.json
-    $settingsFile = 'settings.json';
+    $settingsFile = '../settings.json';
 
     // Read and decode the JSON file
     if (!file_exists($settingsFile)) {
@@ -54,6 +65,7 @@
     }
 
     $words = getWordsFromFile($filePath);
+    //echo $words;
 
     function getRandomWord($words)
     {
@@ -85,8 +97,12 @@
     <form autocomplete="off" id="formularz" method="post" action="inputCheck.php">
         <input type="hidden" name="random-word" id="random-word" value="<?php echo $word ?>">
 
-        <input type="text" name="user-input" id="userInput" class="required" value=""><br>
+        <input type="text" name="user-input" id="userInput" class="required" value="">
         <button type="submit" id="input-check">Sprawdź</button>
+    </form>
+    </main>
+    <form action="../menu.php" method="post" class="settings">
+    <button type="submit">ustawienia</button>
     </form>
     <p id="test"></p>
     <?php

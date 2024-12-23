@@ -3,6 +3,6 @@
     "autofocus": false,
     "visibleWord": false,
     "visibleNumber": false,
-    "playSound" : true,
-    "volume": 1
+    "playSound": true,
+    "volume": 0.41
 }

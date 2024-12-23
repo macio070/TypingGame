@@ -5,10 +5,11 @@ $(document).ready(function () {
     console.log(random_word);
     let volume;
     console.log("skibidi")
-    $.getJSON("settings.json", function (settings) {
+    $.getJSON("../settings.json", function (settings) {
         const autofocus = settings.autofocus;
         const soundOn = settings.playSound;
         volume = settings.volume;
+        console.log(autofocus);
         if(autofocus){
             document.getElementById("userInput").focus();
         }
@@ -16,7 +17,7 @@ $(document).ready(function () {
             document.getElementById("soundButton").disabled = true;
         }
         $("#soundButton").click(function () {
-            let url = `./audio/${random_word}.ogg`;
+            let url = `../audio/${random_word}.ogg`;
             console.log(url);
             const audio = new Audio(url);
             audio.volume = volume;
@@ -27,8 +28,8 @@ $(document).ready(function () {
     //keyboard actions
     window.addEventListener('keydown', checkKeyPressed, false);
     function checkKeyPressed(evt) {
-        if (evt.keyCode == "188" && document.activeElement != document.getElementById("userInput")) { // ","
-            let url = `./audio/${random_word}.ogg`;
+        if (evt.keyCode == "188" && document.activeElement != document.getElementById("userInput") && document.getElementById("soundButton").disabled == false) { // ","
+            let url = `../audio/${random_word}.ogg`;
             console.log(url);
             const audio = new Audio(url);
             audio.volume = volume;
@@ -41,4 +42,8 @@ $(document).ready(function () {
         }
     }
 
+    window.addEventListener("beforeunload", function () {
+        // Use the Beacon API to send a request to the session destruction PHP script
+        navigator.sendBeacon("destroy_session.php");
+    });
 });

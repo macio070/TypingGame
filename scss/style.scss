@@ -7,16 +7,36 @@
 }
 body{
     display: flex;
-    flex-direction: column;
     gap: 10px;
     align-items: center;
     justify-content: center;
 }
 .keyboardControls{
     position: absolute;
-    top: 0;
+    align-self: flex-start;
     left: 0;
-    margin: 25px;
+    margin: 15px;
+    p{
+        font-size: 1em;
+    }
+}
+.settings{
+    position: absolute;
+    right: 0;
+    margin: 15px;
+    align-self: flex-start;
+    button{
+        font-size: 1.5em;
+        font-weight: bold;
+        width: 175px;
+        height: 75px;
+        background-color: #e14176;
+    }
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 form{
     display: flex;
